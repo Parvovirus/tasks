@@ -11,6 +11,7 @@ function Register() {
       nick,
       email,
       pass,
+      pass2
     }
 
     const requestOptions = {

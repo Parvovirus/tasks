@@ -4,12 +4,16 @@ const user = require('../models/users');
 const users = {
 
   registro: async (req, res) => {
-
+    //console.log("se regibe la info del front")
 
     try {
-      const { email, pass, pass2, nick } = req.body
+      const { email, pass, pass2, nick } = req.body.newUser;
       let usuario = await user.findOne({ email: email });
-      
+      console.log(email)
+      console.log(pass)
+      console.log(pass2)
+      console.log(nick)
+
       //comprobar si el usuario esta ya registrado
       if (usuario) {
         console.log("usuario ya registrado")
