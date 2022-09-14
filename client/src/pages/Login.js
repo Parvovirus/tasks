@@ -1,9 +1,20 @@
-import React, {useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import './css/login.css'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
 
+  const [message, setMessage] = useState('')
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (message.message == 'valid') {
+      //Te lleva a la agenda.js
+      console.log('valido')
+      navigate("/agenda")
+    }
+  }, [message])
 
   const loguear = () => {
     let giveUser = {
@@ -19,14 +30,15 @@ function Login() {
 
     fetch('loguear', requestOptions)
       .then((res) => res.json())
-      .then((res) => {})
-
-
+      .then((res) => {
+        setMessage(res)
+        console.log(res)
+      })
   }
 
   return (
-    <div>
-      <div className="form-register">
+    <div className="div-login">
+      <div className="form-login">
         <label>Email</label>
         <input
           type="email"
@@ -38,7 +50,7 @@ function Login() {
           type="password"
           onChange={(e) => setPass(e.target.value)}
         ></input>
-       
+
         <input type="button" value="Loguear" onClick={() => loguear()} />
       </div>
     </div>

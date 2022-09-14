@@ -1,53 +1,53 @@
-const mongoose = require("mongoose");
-const user = require('../models/users');
+const mongoose = require('mongoose')
+const user = require('../models/users')
 //const jwt = require("jsonwebtoken");
 const users = {
-
   registro: async (req, res) => {
     //console.log("se regibe la info del front")
 
     try {
-      const { email, pass, pass2, nick } = req.body.newUser;
-      let usuario = await user.findOne({ email: email });
-
+      const { email, pass, pass2, nick } = req.body.newUser
+      let usuario = await user.findOne({ email: email })
 
       //comprobar si el usuario esta ya registrado
       if (usuario) {
-        console.log("usuario ya registrado")
+        console.log('usuario ya registrado')
+        res.json('existe')
 
         //si el usuario no existe, vamos a comprobar los datos introducidos y lo vamos a crear
       } else {
-
-        if (nick.match(/^[a-z ,.'-]+$/i) && email.match(
-          /^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,4}$/) && pass === pass2) {
-
+        if (
+          nick.match(/^[a-z ,.'-]+$/i) &&
+          email.match(
+            /^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,4}$/,
+          ) &&
+          pass === pass2
+        ) {
           //se crea el JSON
           let userJson = {
             _id: new mongoose.Types.ObjectId(),
             nick,
             email,
             pass,
-
-          };
+          }
 
           //se crea el usuario
-          let newUser = new user(userJson);
+          let newUser = new user(userJson)
 
           //se guarda el usuario en la BBDD
           newUser.save(function (err) {
-            if (err) throw err;
-            console.log("Inserción correcta");
-
-          });
-
-
+            if (err) throw err
+            console.log('Inserción correcta')
+            res.json('valid')
+          })
         } else {
-          console.log("datos incorectos")
+          console.log('datos incorectos')
+          res.json('invalid')
         }
       }
     } catch (error) {
-      console.error(error);
-      res.send("Error");
+      console.error(error)
+      res.send('Error')
     }
   },
 
@@ -55,32 +55,33 @@ const users = {
     //console.log("se regibe la info del front")
 
     try {
-      const { email, pass } = req.body.giveUser;
-      let usuario = await user.findOne({ email: email });
-
+      const { email, pass } = req.body.giveUser
+      let usuario = await user.findOne({ email: email })
 
       //comprobar si el usuario esta ya registrado
       if (usuario) {
-        console.log("usuario registrado")
-        if(usuario.pass == pass) {
-          console.log("Datos correctos")
+        console.log('usuario registrado')
+        if (usuario.pass == pass) {
+          console.log('Datos correctos')
+          usuario.message == 'valid'
+          let user = {
+            usuario,
+            message: 'valid',
+          }
+          res.json(user)
         } else {
-          console.log("contraseña incorecta")
+          console.log('contraseña incorecta')
+          res.json('incorrect')
         }
-        
       } else {
-
-        console.log("Usuario no registrado")
+        console.log('Usuario no registrado')
+        res.json('register')
       }
     } catch (error) {
-      console.error(error);
-      res.send("Error");
+      console.error(error)
+      res.send('Error')
     }
-  }
+  },
+}
 
-
-};
-
-module.exports = users;
-
-
+module.exports = users

@@ -1,11 +1,9 @@
-.div-register {
+.div-login {
     background-color: rgb(32, 55, 110);
     height          : 100vh;
 }
 
-
-
-.form-register {
+.form-login {
     padding         : 3%;
     background-color: cadetblue;
     margin          : 10% auto;
@@ -13,15 +11,4 @@
     flex-direction  : column;
     justify-content : space-around;
     width           : 30%;
-}
-
-.img-form {
-    margin-left: 3%;
-    margin-top : 3%;
-    width      : 2%;
-}
-
-.form-title {
-    align-self: center;
-    font-size : xx-large;
 }
