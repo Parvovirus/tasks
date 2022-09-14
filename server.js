@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 
-const port = process.env.PORT || 5500;
+//const port = process.env.PORT || 5500;
+const port = 5500;
 
-app.listen(port, console.log("Server ON"));
+app.listen(port, () => console.log("Server ON"));
