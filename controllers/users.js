@@ -9,10 +9,7 @@ const users = {
     try {
       const { email, pass, pass2, nick } = req.body.newUser;
       let usuario = await user.findOne({ email: email });
-      console.log(email)
-      console.log(pass)
-      console.log(pass2)
-      console.log(nick)
+
 
       //comprobar si el usuario esta ya registrado
       if (usuario) {
@@ -47,6 +44,33 @@ const users = {
         } else {
           console.log("datos incorectos")
         }
+      }
+    } catch (error) {
+      console.error(error);
+      res.send("Error");
+    }
+  },
+
+  loguear: async (req, res) => {
+    //console.log("se regibe la info del front")
+
+    try {
+      const { email, pass } = req.body.giveUser;
+      let usuario = await user.findOne({ email: email });
+
+
+      //comprobar si el usuario esta ya registrado
+      if (usuario) {
+        console.log("usuario registrado")
+        if(usuario.pass == pass) {
+          console.log("Datos correctos")
+        } else {
+          console.log("contraseña incorecta")
+        }
+        
+      } else {
+
+        console.log("Usuario no registrado")
       }
     } catch (error) {
       console.error(error);
