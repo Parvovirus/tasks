@@ -1,0 +1,26 @@
+.home {
+    display        : flex;
+    flex-direction : column;
+    justify-content: space-around;
+    max-height: max-content;
+}
+
+.img-port {
+    width: 50%;
+}
+
+button {
+    margin-top   : 40px;
+    border-style : none;
+    background   : #009E9E;
+    padding      : 8px;
+    color        : white;
+    border       : 1.5px solid #B3B3B3;
+    box-sizing   : border-box;
+    border-radius: 4px;
+}
+
+link {
+    text-decoration: none;
+
+}
