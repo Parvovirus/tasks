@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './css/login.css'
 import { Link, useNavigate } from 'react-router-dom'
+import userContext from "../context/userContext";
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -8,11 +9,21 @@ function Login() {
 
   const [message, setMessage] = useState('')
   const navigate = useNavigate();
+  // const { usuario, setUsuario } = useContext(userContext)
+  const title = useContext(userContext)
+
   useEffect(() => {
+    //setUsuario(message.usuario.nick)
     if (message.message == 'valid') {
       //Te lleva a la agenda.js
+      //localStorage.setItem("user", JSON.stringify(message))
       console.log('valido')
+      console.log(title)
+      // title.setUsuario(message)
       navigate("/agenda")
+
+
+
     }
   }, [message])
 
@@ -33,6 +44,8 @@ function Login() {
       .then((res) => {
         setMessage(res)
         console.log(res)
+
+
       })
   }
 
