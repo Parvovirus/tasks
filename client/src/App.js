@@ -5,12 +5,13 @@ import React, { useState, useContext } from "react"
 
 function App() {
 
-  const {usuario, setUsuario } = useState("JORGE")
- 
+  const [usuario, setUsuario] = useState('coke')
+  //console.log(usuario)
+
 
   return (
     <div className="App">
-      <userContext.Provider value={"JORGE"}>
+      <userContext.Provider value={{usuario, setUsuario}}>
         <BrowserRouter>
           <Main />
         </BrowserRouter>

@@ -9,17 +9,18 @@ function Login() {
 
   const [message, setMessage] = useState('')
   const navigate = useNavigate();
-  // const { usuario, setUsuario } = useContext(userContext)
-  const title = useContext(userContext)
+  
+  const {usuario, setUsuario} = useContext(userContext)
+
+  console.log(message)
 
   useEffect(() => {
     //setUsuario(message.usuario.nick)
     if (message.message == 'valid') {
       //Te lleva a la agenda.js
-      //localStorage.setItem("user", JSON.stringify(message))
+ 
       console.log('valido')
-      console.log(title)
-      // title.setUsuario(message)
+      
       navigate("/agenda")
 
 
@@ -44,13 +45,17 @@ function Login() {
       .then((res) => {
         setMessage(res)
         console.log(res)
-
+        //setUsuario("mihai")
+        
 
       })
   }
 
   return (
+
+    
     <div className="div-login">
+      {message ? setUsuario(message.usuario.nick): ""}
       <div className="form-login">
         <label>Email</label>
         <input

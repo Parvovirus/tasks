@@ -5,9 +5,9 @@ import userContext from "../context/userContext";
 
 function Agenda() {
 
-  const usuario = useContext(userContext)
+  //const {usuario, setUsuario} = useState('')
+  const {usuario, setUsuario} = useContext(userContext)
   console.log(usuario)
-
 
   return (
     <div className="div-agenda">
