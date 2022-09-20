@@ -2,8 +2,13 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import userContext from '../context/userContext'
 
-function Agenda(props) {
-  const {usuario,setUsuario} = useContext(userContext)
+
+
+function Agenda() {
+
+  //const {usuario, setUsuario} = useState('')
+  const {usuario, setUsuario} = useContext(userContext)
+
   console.log(usuario)
 
   return (

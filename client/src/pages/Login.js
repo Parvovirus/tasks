@@ -18,11 +18,8 @@ function Login() {
       //Te lleva a la agenda.js
      
       console.log('valido')
-
       // title.setUsuario(message)
       navigate("/agenda")
-
-
 
     }
   }, [message])
@@ -44,13 +41,17 @@ function Login() {
       .then((res) => {
         setMessage(res)
         console.log(res)
-
+        //setUsuario("mihai")
+        
 
       })
   }
 
   return (
+
+    
     <div className="div-login">
+      {message ? setUsuario(message.usuario.nick): ""}
       <div className="form-login">
         <label>Email</label>
         <input
