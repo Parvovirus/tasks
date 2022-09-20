@@ -10,15 +10,15 @@ function Login() {
   const [message, setMessage] = useState('')
   const navigate = useNavigate();
   // const { usuario, setUsuario } = useContext(userContext)
-  const title = useContext(userContext)
+ 
 
   useEffect(() => {
-    //setUsuario(message.usuario.nick)
+   
     if (message.message == 'valid') {
       //Te lleva a la agenda.js
-      //localStorage.setItem("user", JSON.stringify(message))
+     
       console.log('valido')
-      console.log(title)
+
       // title.setUsuario(message)
       navigate("/agenda")
 
